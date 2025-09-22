@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,11 +11,11 @@
             font-family: 'Inter', sans-serif;
         }
         .form-section {
-            border-left: 3px solid #1D4ED8;
+            border-left: 3px solid #1D4ED8; /* Royal Blue */
         }
         .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #3498db;
+            border: 4px solid #f3f3f3; /* Light Grey */
+            border-top: 4px solid #3B82F6; /* Blue */
             border-radius: 50%;
             width: 24px;
             height: 24px;
@@ -26,16 +26,26 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        /* Style for disabled buttons */
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
     <div class="container mx-auto max-w-4xl p-4 sm:p-6 md:p-8">
         
-        <header class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-blue-800">SACT Prescribing & Verification Near-Miss / Incident Reporting Form</h1>
+        <header class="text-center mb-6">
+            <h1 class="text-3xl font-bold text-blue-800">SACT Prescribing & Verification Incident Reporting Form</h1>
             <p class="mt-2 text-md text-gray-600">This confidential form is for quality improvement purposes to enhance the safety of anticancer therapy prescribing.</p>
         </header>
+
+        <div class="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded-lg relative mb-8" role="alert">
+            <strong class="font-bold">Confidential & Non-Punitive:</strong>
+            <span class="block sm:inline"> This reporting system is designed for learning and system improvement. All reports are treated confidentially.</span>
+        </div>
 
         <form id="sact-form" class="bg-white p-6 sm:p-8 rounded-lg shadow-lg space-y-8">
 
@@ -44,22 +54,23 @@
                 <h2 class="text-xl font-semibold text-blue-700 mb-4">1. Administrative Details</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label for="report-id" class="block text-sm font-medium text-gray-700">Report ID (For internal tracking)</label>
-                        <input type="text" id="report-id" name="reportId" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <label for="report-id" class="block text-sm font-medium text-gray-700">Report ID (Optional)</label>
+                        <input type="text" id="report-id" name="reportId" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="e.g., Local tracking number">
                     </div>
                     <div>
                         <label for="date-of-report" class="block text-sm font-medium text-gray-700">Date of Report</label>
-                        <input type="date" id="date-of-report" name="dateOfReport" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <input type="date" id="date-of-report" name="dateOfReport" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                     </div>
                     <div class="md:col-span-2">
                         <label class="block text-sm font-medium text-gray-700">Reporter's Role</label>
-                        <div class="mt-2 space-y-2 sm:space-y-0 sm:flex sm:space-x-4">
+                        <div class="mt-2 space-y-2 sm:space-y-0 sm:flex sm:items-center sm:space-x-4 flex-wrap">
                             <label class="inline-flex items-center"><input type="radio" name="reporterRole" value="Prescriber" class="form-radio text-blue-600"> <span class="ml-2">Prescriber (Doctor/NOCP)</span></label>
                             <label class="inline-flex items-center"><input type="radio" name="reporterRole" value="Pharmacist" class="form-radio text-blue-600"> <span class="ml-2">Pharmacist</span></label>
                             <label class="inline-flex items-center"><input type="radio" name="reporterRole" value="Nurse" class="form-radio text-blue-600"> <span class="ml-2">Nurse</span></label>
-                            <div class="inline-flex items-center">
-                                <label><input type="radio" name="reporterRole" value="Other" class="form-radio text-blue-600"> <span class="ml-2">Other:</span></label>
-                                <input type="text" name="reporterRoleOther" class="ml-2 block w-full sm:w-auto rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm">
+                            <div class="inline-flex items-center mt-2 sm:mt-0">
+                                <input type="radio" name="reporterRole" value="Other" class="form-radio text-blue-600">
+                                <label class="ml-2">Other:</label>
+                                <input type="text" name="reporterRoleOther" class="ml-2 w-40 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm" placeholder="Please specify">
                             </div>
                         </div>
                     </div>
@@ -72,17 +83,17 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                      <div>
                         <label for="incident-date" class="block text-sm font-medium text-gray-700">Date of Incident/Discovery</label>
-                        <input type="date" id="incident-date" name="incidentDate" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <input type="date" id="incident-date" name="incidentDate" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                     </div>
                     <div>
                         <label for="incident-time" class="block text-sm font-medium text-gray-700">Time of Incident/Discovery (24hr)</label>
-                        <input type="time" id="incident-time" name="incidentTime" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <input type="time" id="incident-time" name="incidentTime" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                     </div>
                     <div class="md:col-span-2">
                         <label class="block text-sm font-medium text-gray-700">Type of Event</label>
                         <div class="mt-2 flex space-x-4">
-                            <label class="inline-flex items-center"><input type="radio" name="eventType" value="Near Miss" class="form-radio text-blue-600"> <span class="ml-2">Near Miss</span></label>
-                            <label class="inline-flex items-center"><input type="radio" name="eventType" value="Incident" class="form-radio text-blue-600"> <span class="ml-2">Incident</span></label>
+                            <label class="inline-flex items-center"><input type="radio" name="eventType" value="Near Miss" class="form-radio text-blue-600"> <span class="ml-2">Near Miss: Error corrected before reaching the patient.</span></label>
+                            <label class="inline-flex items-center"><input type="radio" name="eventType" value="Incident" class="form-radio text-blue-600"> <span class="ml-2">Incident: Error reached the patient.</span></label>
                         </div>
                     </div>
                 </div>
@@ -91,6 +102,7 @@
             <!-- Section 3: Prescribing System -->
             <div class="form-section pl-4">
                 <h2 class="text-xl font-semibold text-blue-700 mb-4">3. Prescribing System Used</h2>
+                <p class="text-sm text-gray-600 mb-2">This is critical for the audit. Please select the system used to generate the prescription.</p>
                 <div class="mt-2 flex space-x-4">
                     <label class="inline-flex items-center"><input type="radio" name="systemUsed" value="Paper" class="form-radio text-blue-600"> <span class="ml-2">Paper-based Prescription</span></label>
                     <label class="inline-flex items-center"><input type="radio" name="systemUsed" value="NCIS" class="form-radio text-blue-600"> <span class="ml-2">Electronic (NCIS)</span></label>
@@ -103,19 +115,19 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label for="patient-id" class="block text-sm font-medium text-gray-700">Patient Identifier / MRN</label>
-                        <input type="text" id="patient-id" name="patientId" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <input type="text" id="patient-id" name="patientId" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Use patient sticker or anonymised ID">
                     </div>
                     <div>
                         <label for="cancer-diagnosis" class="block text-sm font-medium text-gray-700">Cancer Diagnosis</label>
-                        <input type="text" id="cancer-diagnosis" name="cancerDiagnosis" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <input type="text" id="cancer-diagnosis" name="cancerDiagnosis" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="e.g., NSCLC">
                     </div>
                      <div>
                         <label for="treatment-protocol" class="block text-sm font-medium text-gray-700">Treatment Protocol/Regimen</label>
-                        <input type="text" id="treatment-protocol" name="treatmentProtocol" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <input type="text" id="treatment-protocol" name="treatmentProtocol" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="e.g., Cisplatin/Pemetrexed">
                     </div>
                      <div>
                         <label for="cycle-day" class="block text-sm font-medium text-gray-700">Cycle/Day</label>
-                        <input type="text" id="cycle-day" name="cycleDay" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <input type="text" id="cycle-day" name="cycleDay" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="e.g., C1D1">
                     </div>
                 </div>
             </div>
@@ -126,8 +138,8 @@
                  <div>
                     <label for="error-description" class="block text-sm font-medium text-gray-700">Provide a clear, factual summary of what happened:</label>
                     <div class="relative">
-                        <textarea id="error-description" name="errorDescription" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
-                        <button type="button" id="summarize-btn" class="absolute top-2 right-2 bg-blue-100 text-blue-700 text-xs font-semibold px-2 py-1 rounded-md hover:bg-blue-200">✨ Auto-summarize & Improve</button>
+                        <textarea id="error-description" name="errorDescription" rows="4" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                        <button type="button" id="summarize-btn" class="absolute top-2 right-2 bg-blue-100 text-blue-700 text-xs font-semibold px-2 py-1 rounded-md hover:bg-blue-200">✨ Auto-summarise & Improve</button>
                     </div>
                      <div id="summarize-loader" class="loader mt-2"></div>
                 </div>
@@ -139,8 +151,9 @@
                         <label class="flex items-center"><input type="radio" name="discoveryStage" value="Nursing Pre-administration Check" class="form-radio text-blue-600"> <span class="ml-2">During Nursing Pre-administration Check</span></label>
                         <label class="flex items-center"><input type="radio" name="discoveryStage" value="During or After Administration" class="form-radio text-blue-600"> <span class="ml-2">During or After Administration</span></label>
                          <div class="flex items-center">
-                            <label><input type="radio" name="discoveryStage" value="Other" class="form-radio text-blue-600"> <span class="ml-2">Other:</span></label>
-                            <input type="text" name="discoveryStageOther" class="ml-2 block w-full sm:w-auto rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm">
+                            <input type="radio" name="discoveryStage" value="Other" class="form-radio text-blue-600">
+                            <label class="ml-2">Other:</label>
+                            <input type="text" name="discoveryStageOther" class="ml-2 w-full sm:w-auto rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm" placeholder="Please specify">
                         </div>
                     </div>
                 </div>
@@ -150,32 +163,33 @@
             <div class="form-section pl-4">
                  <h2 class="text-xl font-semibold text-blue-700 mb-4">6. Error Classification (Select all that apply)</h2>
                  <div class="space-y-2">
-                    <label class="flex items-center"><input type="checkbox" name="errorClassification" value="Wrong Dose" class="form-checkbox text-blue-600"> <span class="ml-2">Wrong Dose</span></label>
+                    <label class="flex items-center"><input type="checkbox" name="errorClassification" value="Wrong Dose" class="form-checkbox text-blue-600"> <span class="ml-2">Wrong Dose (e.g., 10mg instead of 100mg)</span></label>
                     <label class="flex items-center"><input type="checkbox" name="errorClassification" value="Wrong Drug" class="form-checkbox text-blue-600"> <span class="ml-2">Wrong Drug</span></label>
                     <label class="flex items-center"><input type="checkbox" name="errorClassification" value="Wrong Route" class="form-checkbox text-blue-600"> <span class="ml-2">Wrong Route</span></label>
                     <label class="flex items-center"><input type="checkbox" name="errorClassification" value="Wrong Frequency" class="form-checkbox text-blue-600"> <span class="ml-2">Wrong Frequency or Timing</span></label>
                     <label class="flex items-center"><input type="checkbox" name="errorClassification" value="Calculation Error" class="form-checkbox text-blue-600"> <span class="ml-2">Calculation Error (e.g., BSA, CrCl)</span></label>
                     <label class="flex items-center"><input type="checkbox" name="errorClassification" value="Omission of Drug" class="form-checkbox text-blue-600"> <span class="ml-2">Omission of a required drug/fluid</span></label>
                     <label class="flex items-center"><input type="checkbox" name="errorClassification" value="Omission of Supportive Care" class="form-checkbox text-blue-600"> <span class="ml-2">Omission of supportive care (e.g., antiemetics, premeds)</span></label>
-                    <label class="flex items-center"><input type="checkbox" name="errorClassification" value="Allergy/Contraindication" class="form-checkbox text-blue-600"> <span class="ml-2">Allergic reaction or contraindication overlooked</span></label>
+                    <label class="flex items-center"><input type="checkbox" name="errorClassification" value="Allergy/Contraindication" class="form-checkbox text-blue-600"> <span class="ml-2">Allergy or contraindication overlooked</span></label>
                     <label class="flex items-center"><input type="checkbox" name="errorClassification" value="Drug Interaction" class="form-checkbox text-blue-600"> <span class="ml-2">Drug interaction overlooked</span></label>
-                    <label class="flex items-center"><input type="checkbox" name="errorClassification" value="Transcription Error" class="form-checkbox text-blue-600"> <span class="ml-2">Transcription error</span></label>
+                    <label class="flex items-center"><input type="checkbox" name="errorClassification" value="Transcription Error" class="form-checkbox text-blue-600"> <span class="ml-2">Transcription error (e.g., paper to system)</span></label>
                      <div class="flex items-center">
-                        <label><input type="checkbox" name="errorClassification" value="Other" class="form-checkbox text-blue-600"> <span class="ml-2">Other:</span></label>
-                        <input type="text" name="errorClassificationOther" class="ml-2 block w-full sm:w-auto rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm">
+                        <input type="checkbox" name="errorClassification" value="Other" class="form-checkbox text-blue-600">
+                        <label class="ml-2">Other:</label>
+                        <input type="text" name="errorClassificationOther" class="ml-2 w-full sm:w-auto rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm" placeholder="Please specify">
                     </div>
                 </div>
             </div>
 
              <!-- Section 7: Incident Outcome -->
             <div class="form-section pl-4">
-                <h2 class="text-xl font-semibold text-blue-700 mb-4">7. Incident Outcome (if applicable)</h2>
+                <h2 class="text-xl font-semibold text-blue-700 mb-4">7. Incident Outcome</h2>
                 <div>
-                    <label for="patient-impact" class="block text-sm font-medium text-gray-700">Describe the impact on the patient:</label>
+                    <label for="patient-impact" class="block text-sm font-medium text-gray-700">Describe the impact on the patient (if applicable):</label>
                     <textarea id="patient-impact" name="patientImpact" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
                 </div>
                 <div class="mt-4">
-                    <label class="block text-sm font-medium text-gray-700">Assign a severity level (NCC MERP Index):</label>
+                    <label class="block text-sm font-medium text-gray-700">Assign a severity level (based on NCC MERP Index):</label>
                     <div class="mt-2 space-y-2">
                         <label class="flex items-center"><input type="radio" name="severity" value="B" class="form-radio text-blue-600"> <span class="ml-2">Category B: Error occurred but did not reach patient (Near Miss)</span></label>
                         <label class="flex items-center"><input type="radio" name="severity" value="C" class="form-radio text-blue-600"> <span class="ml-2">Category C: Error reached patient, no harm</span></label>
@@ -192,24 +206,24 @@
                     <div>
                         <h3 class="font-medium text-gray-800">System Factors</h3>
                         <div class="mt-2 space-y-2">
-                            <label class="flex items-center"><input type="checkbox" name="contributingFactors" value="NCIS Issue" class="form-checkbox text-blue-600"> <span class="ml-2">NCIS issue</span></label>
-                            <label class="flex items-center"><input type="checkbox" name="contributingFactors" value="Paper Chart Issue" class="form-checkbox text-blue-600"> <span class="ml-2">Paper chart issue</span></label>
-                            <label class="flex items-center"><input type="checkbox" name="contributingFactors" value="Lack of Info" class="form-checkbox text-blue-600"> <span class="ml-2">Lack of integrated info</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="contributingFactors" value="NCIS Issue" class="form-checkbox text-blue-600"> <span class="ml-2">NCIS issue (e.g. alert fatigue)</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="contributingFactors" value="Paper Chart Issue" class="form-checkbox text-blue-600"> <span class="ml-2">Paper chart issue (e.g. illegible)</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="contributingFactors" value="Lack of Info" class="form-checkbox text-blue-600"> <span class="ml-2">Lack of integrated information</span></label>
                         </div>
                     </div>
                      <div>
                         <h3 class="font-medium text-gray-800">Human Factors</h3>
                         <div class="mt-2 space-y-2">
-                            <label class="flex items-center"><input type="checkbox" name="contributingFactors" value="Distraction" class="form-checkbox text-blue-600"> <span class="ml-2">Distraction/Interruption</span></label>
-                            <label class="flex items-center"><input type="checkbox" name="contributingFactors" value="Workload" class="form-checkbox text-blue-600"> <span class="ml-2">High workload/Time pressure</span></label>
-                            <label class="flex items-center"><input type="checkbox" name="contributingFactors" value="Inexperience" class="form-checkbox text-blue-600"> <span class="ml-2">Inexperience/Lack of knowledge</span></label>
-                             <label class="flex items-center"><input type="checkbox" name="contributingFactors" value="Laps in Concentration" class="form-checkbox text-blue-600"> <span class="ml-2">Laps in concentration</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="contributingFactors" value="Distraction" class="form-checkbox text-blue-600"> <span class="ml-2">Distraction or interruption</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="contributingFactors" value="Workload" class="form-checkbox text-blue-600"> <span class="ml-2">High workload / Time pressure</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="contributingFactors" value="Inexperience" class="form-checkbox text-blue-600"> <span class="ml-2">Inexperience or lack of knowledge</span></label>
+                             <label class="flex items-center"><input type="checkbox" name="contributingFactors" value="Lapse in Concentration" class="form-checkbox text-blue-600"> <span class="ml-2">Lapse in concentration</span></label>
                         </div>
                     </div>
                      <div>
                         <h3 class="font-medium text-gray-800">Communication</h3>
                         <div class="mt-2 space-y-2">
-                            <label class="flex items-center"><input type="checkbox" name="contributingFactors" value="Poor Communication" class="form-checkbox text-blue-600"> <span class="ml-2">Poor verbal/written communication</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="contributingFactors" value="Poor Communication" class="form-checkbox text-blue-600"> <span class="ml-2">Poor verbal or written communication</span></label>
                             <label class="flex items-center"><input type="checkbox" name="contributingFactors" value="Inadequate Handover" class="form-checkbox text-blue-600"> <span class="ml-2">Inadequate handover</span></label>
                         </div>
                     </div>
@@ -218,7 +232,7 @@
 
             <!-- Section 9: Corrective Actions & Recommendations -->
             <div class="form-section pl-4">
-                <h2 class="text-xl font-semibold text-blue-700 mb-4">9. Corrective Actions & Recommendations</h2>
+                <h2 class="text-xl font-semibold text-blue-700 mb-4">9. Actions & Recommendations</h2>
                  <div>
                     <label for="corrective-actions" class="block text-sm font-medium text-gray-700">What immediate actions were taken to correct the error and manage the patient?</label>
                     <textarea id="corrective-actions" name="correctiveActions" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
@@ -236,204 +250,210 @@
             <!-- Submission -->
             <div class="pt-6 border-t border-gray-200">
                 <div class="flex justify-end items-center">
-                    <div id="submit-loader" class="loader mr-4"></div>
-                    <p id="success-message" class="text-green-600 font-medium mr-4" style="display: none;">Report submitted successfully!</p>
-                    <button type="submit" class="bg-blue-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out">
-                        Submit Report
+                    <p id="success-message" class="text-green-600 font-semibold mr-4" style="display: none;">✔️ Report submitted successfully!</p>
+                    <button type="submit" id="submit-button" class="bg-blue-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out flex items-center">
+                        <span id="submit-button-text">Submit Report</span>
+                        <div id="submit-loader" class="loader ml-2" style="border-top-color: white; width: 20px; height: 20px;"></div>
                     </button>
                 </div>
-                 <p id="error-message" class="text-red-600 text-right mt-2" style="display: none;">An error occurred. Please try again.</p>
+                 <p id="error-message" class="text-red-600 text-right mt-2 font-medium" style="display: none;">Submission failed. Please check all required fields and try again.</p>
             </div>
         </form>
     </div>
 
     <!-- Firebase and Gemini API integration script -->
     <script type="module">
-        // Import Firebase modules. These are required to talk to the database.
+        // Import Firebase modules for database functionality.
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // --- IMPORTANT ACTION REQUIRED ---
-        // PASTE YOUR FIREBASE CONFIGURATION OBJECT HERE
-        // You get this from Step 3 of the Firebase Setup Guide.
+        // Your specific Firebase project configuration.
         const firebaseConfig = {
-  apiKey: "AIzaSyBcRmomGyrUKCQXu61cRY1A3hHw8sJH9h8",
-  authDomain: "sact-incident-form.firebaseapp.com",
-  projectId: "sact-incident-form",
-  storageBucket: "sact-incident-form.firebasestorage.app",
-  messagingSenderId: "219426881057",
-  appId: "1:219426881057:web:682ff46146571bba882d60"
-};
+            apiKey: "AIzaSyBcRmomGyrUKCQXu61cRY1A3hHw8sJH9h8",
+            authDomain: "sact-incident-form.firebaseapp.com",
+            projectId: "sact-incident-form",
+            storageBucket: "sact-incident-form.firebasestorage.app",
+            messagingSenderId: "219426881057",
+            appId: "1:219426881057:web:682ff46146571bba882d60"
+        };
 
-        // Initialize Firebase
+        // Initialize Firebase services
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
+        // --- Form elements ---
         const form = document.getElementById('sact-form');
+        const submitButton = document.getElementById('submit-button');
+        const submitButtonText = document.getElementById('submit-button-text');
         const submitLoader = document.getElementById('submit-loader');
         const successMessage = document.getElementById('success-message');
         const errorMessage = document.getElementById('error-message');
         
-        // This function runs when the "Submit Report" button is clicked.
+        // --- Smart 'Other' field logic ---
+        function setupOtherFieldLogic(radioName, otherInputName) {
+            const radios = document.querySelectorAll(`input[name="${radioName}"]`);
+            const otherInput = document.querySelector(`input[name="${otherInputName}"]`);
+            radios.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    if (radio.value === 'Other' && radio.checked) {
+                        otherInput.focus();
+                    }
+                });
+            });
+             otherInput.addEventListener('focus', () => {
+                document.querySelector(`input[name="${radioName}"][value="Other"]`).checked = true;
+            });
+        }
+        setupOtherFieldLogic('reporterRole', 'reporterRoleOther');
+        setupOtherFieldLogic('discoveryStage', 'discoveryStageOther');
+        setupOtherFieldLogic('errorClassification', 'errorClassificationOther', true);
+
+
+        // --- Set default dates ---
+        function setDefaultDate() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('date-of-report').value = today;
+            document.getElementById('incident-date').value = today;
+        }
+        setDefaultDate();
+        
+        // --- Form Submission Handler ---
         form.addEventListener('submit', async (e) => {
-            e.preventDefault(); // Prevents the page from reloading.
+            e.preventDefault(); // Prevent default page reload
             
+            // Provide user feedback during submission
+            submitButton.disabled = true;
+            submitButtonText.textContent = 'Submitting...';
             submitLoader.style.display = 'block';
             successMessage.style.display = 'none';
             errorMessage.style.display = 'none';
 
             try {
-                // This part gathers all the data from the form into a single object.
                 const formData = new FormData(form);
                 const reportData = {};
                 
-                // Handling regular inputs
+                // Process all form fields into a clean data object
                 formData.forEach((value, key) => {
-                    if (!key.endsWith('Other')) { // Exclude 'Other' text fields for now
-                         if (reportData[key]) {
-                            if (!Array.isArray(reportData[key])) {
-                                reportData[key] = [reportData[key]];
-                            }
-                            reportData[key].push(value);
-                        } else {
-                            reportData[key] = value;
+                    // This logic handles multiple checkboxes with the same name
+                    if (reportData[key]) {
+                        if (!Array.isArray(reportData[key])) {
+                            reportData[key] = [reportData[key]];
                         }
+                        reportData[key].push(value);
+                    } else {
+                        reportData[key] = value;
                     }
                 });
 
-                // Special handling for 'Other' fields
-                const reporterRole = reportData.reporterRole;
-                if (reporterRole === 'Other') {
-                    reportData.reporterRole = `Other: ${formData.get('reporterRoleOther')}`;
+                // Consolidate 'Other' text fields into their main properties
+                if (reportData.reporterRole === 'Other') {
+                    reportData.reporterRole = `Other: ${formData.get('reporterRoleOther') || 'Not specified'}`;
                 }
-                const discoveryStage = reportData.discoveryStage;
-                if (discoveryStage === 'Other') {
-                    reportData.discoveryStage = `Other: ${formData.get('discoveryStageOther')}`;
+                if (reportData.discoveryStage === 'Other') {
+                    reportData.discoveryStage = `Other: ${formData.get('discoveryStageOther') || 'Not specified'}`;
                 }
-                
-                // Consolidate 'Other' for error classification checkboxes
-                 if (Array.isArray(reportData.errorClassification) && reportData.errorClassification.includes('Other')) {
+                if (Array.isArray(reportData.errorClassification) && reportData.errorClassification.includes('Other')) {
                     const otherText = formData.get('errorClassificationOther');
                     const otherIndex = reportData.errorClassification.indexOf('Other');
-                    reportData.errorClassification[otherIndex] = `Other: ${otherText}`;
+                    reportData.errorClassification[otherIndex] = `Other: ${otherText || 'Not specified'}`;
                 } else if (reportData.errorClassification === 'Other') {
-                     reportData.errorClassification = `Other: ${formData.get('errorClassificationOther')}`;
+                     reportData.errorClassification = `Other: ${formData.get('errorClassificationOther') || 'Not specified'}`;
                 }
 
+                // Remove the now redundant 'Other' text fields from the final object
+                delete reportData.reporterRoleOther;
+                delete reportData.discoveryStageOther;
+                delete reportData.errorClassificationOther;
+                
+                reportData.submittedAt = new Date(); // Use Firestore server timestamp
 
-                // Add a timestamp for when the report was submitted.
-                reportData.submittedAt = new Date().toISOString();
+                // Send the data to the 'reports' collection in your Firestore database
+                await addDoc(collection(db, "reports"), reportData);
 
-                // This is the key command: It sends the data to a Firestore collection named "reports".
-                // If the collection doesn't exist, Firestore creates it automatically.
-                const docRef = await addDoc(collection(db, "reports"), reportData);
-                console.log("Document written with ID: ", docRef.id);
-
-                // Show success message and reset the form.
+                // Show success message and reset the form for the next entry
                 successMessage.style.display = 'block';
                 form.reset();
+                setDefaultDate(); // Reset dates to today after submission
                 setTimeout(() => { successMessage.style.display = 'none'; }, 5000);
 
             } catch (error) {
                 console.error("Error adding document: ", error);
                 errorMessage.style.display = 'block';
             } finally {
-                submitLoader.style.display = 'none'; // Hide loader
+                // Reset button to its original state
+                submitButton.disabled = false;
+                submitButtonText.textContent = 'Submit Report';
+                submitLoader.style.display = 'none';
             }
         });
 
 
         // --- Gemini API Functionality ---
-        const apiKey = ""; // Canvas will provide this automatically.
+        const apiKey = ""; // This is populated by the hosting environment
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
-        async function callGemini(prompt) {
-            const payload = {
-                contents: [{ parts: [{ text: prompt }] }],
-            };
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-            if (!response.ok) {
-                throw new Error(`API call failed with status: ${response.status}`);
+        async function callGemini(prompt, button, loader) {
+            button.disabled = true;
+            loader.style.display = 'block';
+            try {
+                const payload = { contents: [{ parts: [{ text: prompt }] }] };
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!response.ok) throw new Error(`API call failed: ${response.status}`);
+                const result = await response.json();
+                const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                if (!text) throw new Error("Invalid response from API");
+                return text;
+            } catch (error) {
+                console.error("Gemini API Error:", error);
+                alert("An error occurred while communicating with the AI. Please check the console for details.");
+                return null; // Return null on error
+            } finally {
+                button.disabled = false;
+                loader.style.display = 'none';
             }
-            const result = await response.json();
-            const candidate = result.candidates?.[0];
-            if (candidate && candidate.content?.parts?.[0]?.text) {
-                return candidate.content.parts[0].text;
-            }
-            throw new Error("Invalid response from API");
         }
 
-        // Auto-summarize & Improve
+        // --- AI Feature: Auto-summarise & Improve ---
         const summarizeBtn = document.getElementById('summarize-btn');
         const errorDescTextarea = document.getElementById('error-description');
         const summarizeLoader = document.getElementById('summarize-loader');
 
         summarizeBtn.addEventListener('click', async () => {
             const originalText = errorDescTextarea.value;
-            if (!originalText.trim()) {
-                alert("Please enter a description first.");
-                return;
-            }
-            summarizeLoader.style.display = 'block';
-            summarizeBtn.disabled = true;
-
-            const prompt = `As a clinical safety expert, revise the following user-submitted text about a medication incident. Your task is to transform it into a clear, objective, and factual summary suitable for an official report. Focus on clarity, accuracy, and neutrality. Remove any subjective opinions, emotional language, or personal blame. Structure the output as a concise summary. Here is the text: "${originalText}"`;
+            if (!originalText.trim()) return;
             
-            try {
-                const improvedText = await callGemini(prompt);
-                errorDescTextarea.value = improvedText;
-            } catch (error) {
-                console.error("Gemini summarization error:", error);
-                alert("Could not improve the text at this time. Please check the console for errors.");
-            } finally {
-                summarizeLoader.style.display = 'none';
-                summarizeBtn.disabled = false;
-            }
+            const prompt = `As a clinical safety expert, revise the following user-submitted text about a medication incident. Transform it into a clear, objective, and factual summary for an official report. Focus on clarity, accuracy, and neutrality. Remove subjective opinions, emotional language, or personal blame. Structure the output as a concise summary.\n\nOriginal Text: "${originalText}"`;
+            
+            const improvedText = await callGemini(prompt, summarizeBtn, summarizeLoader);
+            if (improvedText) errorDescTextarea.value = improvedText;
         });
 
-        // Suggest Recommendations
+        // --- AI Feature: Suggest Recommendations ---
         const suggestBtn = document.getElementById('suggest-btn');
         const recommendationsTextarea = document.getElementById('recommendations');
         const suggestLoader = document.getElementById('suggest-loader');
 
         suggestBtn.addEventListener('click', async () => {
-            // Gather context from the form
             const errorDesc = document.getElementById('error-description').value;
-            const system = document.querySelector('input[name="systemUsed"]:checked')?.value || 'Not specified';
-            const errorTypes = Array.from(document.querySelectorAll('input[name="errorClassification"]:checked')).map(el => el.value).join(', ');
-            const factors = Array.from(document.querySelectorAll('input[name="contributingFactors"]:checked')).map(el => el.value).join(', ');
-
             if (!errorDesc.trim()) {
-                alert("Please provide an error description first to generate relevant recommendations.");
+                alert("Please provide an error description to generate relevant recommendations.");
                 return;
             }
             
-            suggestLoader.style.display = 'block';
-            suggestBtn.disabled = true;
+            const system = document.querySelector('input[name="systemUsed"]:checked')?.value || 'Not specified';
+            const errorTypes = Array.from(document.querySelectorAll('input[name="errorClassification"]:checked')).map(el => el.value).join(', ') || 'Not specified';
+            const factors = Array.from(document.querySelectorAll('input[name="contributingFactors"]:checked')).map(el => el.value).join(', ') || 'Not specified';
 
-            const prompt = `Act as a patient safety and medication risk management expert. Based on the following medication incident details, generate a list of 3-4 specific, actionable recommendations to prevent recurrence.
-            - System Used: ${system}
-            - Error Description: "${errorDesc}"
-            - Types of Error(s): ${errorTypes}
-            - Contributing Factors: ${factors}
-            
-            Format the output as a bulleted list.`;
+            const prompt = `Act as a patient safety and medication risk management expert. Based on the following medication incident details, generate a list of 3-4 specific, actionable recommendations to prevent recurrence.\n- System Used: ${system}\n- Error Description: "${errorDesc}"\n- Types of Error(s): ${errorTypes}\n- Contributing Factors: ${factors}\n\nFormat the output as a bulleted or numbered list.`;
 
-            try {
-                const suggestions = await callGemini(prompt);
-                recommendationsTextarea.value = suggestions;
-            } catch (error) {
-                console.error("Gemini suggestion error:", error);
-                alert("Could not generate recommendations at this time. Please check the console for errors.");
-            } finally {
-                suggestLoader.style.display = 'none';
-                suggestBtn.disabled = false;
-            }
+            const suggestions = await callGemini(prompt, suggestBtn, suggestLoader);
+            if (suggestions) recommendationsTextarea.value = suggestions;
         });
     </script>
 </body>
 </html>
+
