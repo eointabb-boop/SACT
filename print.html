@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printable SACT Incident Reporting Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #111827; /* Near-black for better printing */
+        }
+        .printable-container {
+            max-width: 8.5in; /* Standard A4/Letter width */
+            margin: auto;
+        }
+        .form-box {
+            border: 1px solid #d1d5db;
+            padding: 0.5rem;
+            margin-top: 0.25rem;
+            min-height: 50px;
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+        }
+        .checkbox-label span {
+            margin-left: 0.5rem;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .no-print {
+                display: none;
+            }
+            .printable-container {
+                box-shadow: none;
+                border: none;
+            }
+        }
+        .footer {
+            text-align: right;
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="printable-container bg-white p-8 my-8 shadow-lg">
+
+        <!-- Page 1 -->
+        <div>
+            <header class="text-center border-b pb-4">
+                <h1 class="text-2xl font-bold text-gray-800">SACT Prescribing & Verification Incident Reporting Form</h1>
+                <p class="mt-1 text-sm text-gray-600">Confidential report for quality improvement purposes.</p>
+            </header>
+
+            <!-- Section 1 & 2 -->
+            <div class="grid grid-cols-2 gap-x-8 mt-4">
+                <div class="border-r pr-4">
+                    <h2 class="text-lg font-semibold mb-2">1. Administrative Details</h2>
+                    <p><strong class="font-medium">Report ID:</strong> _________________________</p>
+                    <p class="mt-2"><strong class="font-medium">Date of Report:</strong> ____ / ____ / ________</p>
+                    <div class="mt-2">
+                        <strong class="font-medium">Reporter's Role:</strong>
+                        <div class="flex space-x-4 text-sm mt-1">
+                            <span>[ ] Prescriber</span>
+                            <span>[ ] Pharmacist</span>
+                            <span>[ ] Nurse</span>
+                            <span>[ ] Other: _________</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-lg font-semibold mb-2">2. Incident / Near-Miss Details</h2>
+                    <p><strong class="font-medium">Date of Incident:</strong> ____ / ____ / ________</p>
+                    <p class="mt-2"><strong class="font-medium">Time (24hr):</strong> ________ : ________</p>
+                    <div class="mt-2">
+                        <strong class="font-medium">Type of Event:</strong>
+                        <div class="flex space-x-4 text-sm mt-1">
+                            <span>[ ] Near Miss</span>
+                            <span>[ ] Incident</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3 & 4 -->
+            <div class="grid grid-cols-2 gap-x-8 mt-4 border-t pt-4">
+                <div class="border-r pr-4">
+                    <h2 class="text-lg font-semibold mb-2">3. Prescribing System Used</h2>
+                    <div class="flex space-x-4 text-sm mt-1">
+                        <span>[ ] Paper-based</span>
+                        <span>[ ] Electronic (NCIS)</span>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-lg font-semibold mb-2">4. Patient & Treatment Details</h2>
+                    <p><strong class="font-medium">Patient ID / MRN:</strong> ________________</p>
+                    <p class="mt-2"><strong class="font-medium">Regimen:</strong> ______________________</p>
+                    <p class="mt-2"><strong class="font-medium">Cycle/Day:</strong> ______________________</p>
+                </div>
+            </div>
+
+            <!-- Section 5 -->
+            <div class="mt-4 border-t pt-4">
+                <h2 class="text-lg font-semibold mb-2">5. Error Description</h2>
+                <p class="text-sm font-medium mb-1">Provide a clear, factual summary of what happened:</p>
+                <div class="form-box h-28"></div>
+                <div class="mt-2">
+                    <strong class="font-medium">Stage of Discovery:</strong>
+                    <div class="grid grid-cols-2 gap-x-8 text-sm mt-1">
+                        <span>[ ] During Prescribing</span>
+                        <span>[ ] During Pharmacist Verification</span>
+                        <span>[ ] During Nursing Pre-admin Check</span>
+                        <span>[ ] During or After Administration</span>
+                        <span>[ ] Other: _________________________</span>
+                    </div>
+                </div>
+            </div>
+            
+             <!-- Section 6 -->
+            <div class="mt-4 border-t pt-4">
+                <h2 class="text-lg font-semibold mb-2">6. Error Classification (Select all that apply)</h2>
+                <div class="grid grid-cols-2 gap-x-8 text-sm">
+                    <span>[ ] Wrong Dose</span>
+                    <span>[ ] Wrong Drug</span>
+                    <span>[ ] Wrong Route</span>
+                    <span>[ ] Wrong Frequency / Timing</span>
+                    <span>[ ] Calculation Error</span>
+                    <span>[ ] Omission of Drug/Fluid</span>
+                    <span>[ ] Omission of Supportive Care</span>
+                    <span>[ ] Allergy/Contraindication Overlooked</span>
+                    <span>[ ] Drug Interaction Overlooked</span>
+                    <span>[ ] Transcription Error</span>
+                    <span>[ ] Other: ___________________________</span>
+                </div>
+            </div>
+
+            <div class="footer">Page 1 of 2</div>
+        </div>
+
+        <!-- Page 2 -->
+        <div class="printable-container bg-white p-8 my-8 shadow-lg page-break">
+             <header class="text-center border-b pb-4">
+                <h1 class="text-2xl font-bold text-gray-800">SACT Incident Reporting Form (cont.)</h1>
+            </header>
+            
+            <!-- Section 7 -->
+            <div class="mt-4">
+                <h2 class="text-lg font-semibold mb-2">7. Incident Outcome</h2>
+                 <p class="text-sm font-medium mb-1">Describe the impact on the patient (if applicable):</p>
+                <div class="form-box h-20"></div>
+                <div class="mt-2">
+                    <strong class="font-medium">Severity Level (NCC MERP Index):</strong>
+                    <div class="space-y-1 text-sm mt-1">
+                        <p>[ ] B: Error, no harm (did not reach patient)</p>
+                        <p>[ ] C: Error, no harm (reached patient)</p>
+                        <p>[ ] D: Error, required monitoring/intervention to preclude harm</p>
+                        <p>[ ] E+: Error contributed to or resulted in patient harm</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 8 -->
+            <div class="mt-4 border-t pt-4">
+                <h2 class="text-lg font-semibold mb-2">8. Contributing Factors (Select all that apply)</h2>
+                <div class="grid grid-cols-3 gap-x-6 text-sm">
+                    <div>
+                        <h3 class="font-semibold">System Factors</h3>
+                        <p class="mt-1">[ ] NCIS issue</p>
+                        <p class="mt-1">[ ] Paper chart issue</p>
+                        <p class="mt-1">[ ] Lack of info</p>
+                    </div>
+                     <div>
+                        <h3 class="font-semibold">Human Factors</h3>
+                        <p class="mt-1">[ ] Distraction</p>
+                        <p class="mt-1">[ ] High workload</p>
+                        <p class="mt-1">[ ] Inexperience</p>
+                        <p class="mt-1">[ ] Lapse in concentration</p>
+                    </div>
+                     <div>
+                        <h3 class="font-semibold">Communication</h3>
+                        <p class="mt-1">[ ] Poor communication</p>
+                        <p class="mt-1">[ ] Inadequate handover</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 9 -->
+            <div class="mt-4 border-t pt-4">
+                <h2 class="text-lg font-semibold mb-2">9. Actions & Recommendations</h2>
+                 <p class="text-sm font-medium mb-1">Immediate actions taken:</p>
+                <div class="form-box h-24"></div>
+                 <p class="text-sm font-medium mb-1 mt-2">Recommendations for prevention:</p>
+                <div class="form-box h-28"></div>
+            </div>
+
+            <div class="footer">Page 2 of 2</div>
+        </div>
+
+    </div>
+
+    <div class="text-center my-8 no-print">
+        <button onclick="window.print()" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700">
+            Print Form
+        </button>
+    </div>
+
+</body>
+</html>
